@@ -1,0 +1,17 @@
+# Framework e Servidor
+fastapi
+uvicorn[standard]
+python-multipart
+
+# LangChain e Google AI
+langchain
+langchain-community
+langchain-google-genai
+google-generativeai
+
+# Utilitários
+python-dotenv
+pydantic
+requests
+aiofiles
+PyPDF2 # Essencial para ler PDFs
