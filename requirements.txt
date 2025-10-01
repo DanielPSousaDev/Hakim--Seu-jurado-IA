@@ -1,0 +1,8 @@
+fastapi[all]
+uvicorn
+python-multipart
+pydantic
+python-dotenv
+google-genai
+# python-magic  <- Remova ou comente este
+python-magic-bin # <- Use este no Windows
