@@ -1,17 +1,14 @@
-# agents/image_agent.py
 import os
 import json
 from google import genai
-from google.genai.errors import APIError # Importa o erro da API para melhor debug
+from google.genai.errors import APIError 
 from core.utils import get_response_schema
 from dotenv import load_dotenv, find_dotenv
 
-# --- Carregamento e Verificação Robusta do .env ---
 dotenv_path = find_dotenv(usecwd=True)
 if dotenv_path:
     load_dotenv(dotenv_path=dotenv_path)
 
-# 🚨 VERIFICAÇÃO CRÍTICA
 API_KEY = os.getenv("GEMINI_API_KEY")
 
 if not API_KEY:
@@ -34,7 +31,6 @@ async def run_image_analysis(file_path: str) -> dict:
     
     uploaded_file = client.files.upload(file=file_path)
     
-    # ADICIONADO: Log de debug para confirmar o upload
     print(f"DEBUG: Upload Gemini bem-sucedido. Nome do arquivo: {uploaded_file.name}")
     
     try:
@@ -51,7 +47,7 @@ async def run_image_analysis(file_path: str) -> dict:
     
     except APIError as e:
         print(f"ERRO API GEMINI no Image Agent: {e}")
-        raise e # Re-lança o erro para ser capturado no main.py
+        raise e 
         
     finally:
         client.files.delete(name=uploaded_file.name)
