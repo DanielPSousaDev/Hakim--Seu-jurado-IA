@@ -1,16 +1,13 @@
-# agents/text_interpreter.py
 import os
 import json
 from google import genai
 from core.utils import get_response_schema
 from dotenv import load_dotenv, find_dotenv
 
-# --- Carregamento e Verificação Robusta do .env ---
 dotenv_path = find_dotenv(usecwd=True)
 if dotenv_path:
     load_dotenv(dotenv_path=dotenv_path)
 
-# 🚨 VERIFICAÇÃO CRÍTICA
 API_KEY = os.getenv("GEMINI_API_KEY")
 
 if not API_KEY:
@@ -18,7 +15,6 @@ if not API_KEY:
         "A chave GEMINI_API_KEY não foi encontrada ou está vazia no seu arquivo .env. "
         "Verifique se o arquivo .env está na pasta raiz e se a chave está correta."
     )
-# ----------------------------------------------------
 
 client = genai.Client(api_key=API_KEY)
 
